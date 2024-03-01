@@ -17,6 +17,7 @@ struct Usuarios{
     std::string UserNome;
     std::string UserLogin;
     std::string UserSenha;
+    float UserSaldo;
 };
 
 /* - Areas dos elementos globais - */
@@ -27,6 +28,11 @@ std::string LoginLogar, SenhaLogar;
 // variáveis referente a função de Registrar usuarios.
 std::string LoginRegistrar, SenhaRegistrar, NomeRegistrar;
 
+// variaveis referentes a funcao do usuario logado.
+std::string NomeUserEncontrado, LoginUserEncontrado, SenhaUserEncontrado;
+
+float SaldoUserEncontrado;
+
 /* Vetor que está sendo utilizado como banco de dados para armazenar usuários */
 std::vector<Usuarios>DatabaseUsers;
 
@@ -36,6 +42,12 @@ std::vector<Usuarios>DatabaseUsers;
 bool UsuarioExiste(std::string LoginLogar, std::string SenhaLogar){
         for(size_t i = 0; i < DatabaseUsers.size(); i++){
             if(DatabaseUsers[i].UserLogin == LoginLogar && DatabaseUsers[i].UserSenha == SenhaLogar){
+
+                    NomeUserEncontrado = DatabaseUsers[i].UserNome;
+                    LoginUserEncontrado = DatabaseUsers[i].UserLogin;
+                    SenhaUserEncontrado = DatabaseUsers[i].UserSenha;
+                    SaldoUserEncontrado = DatabaseUsers[i].UserSaldo;
+
                 return true;
             }
         }
@@ -52,8 +64,73 @@ bool LoginExiste(std::string LoginRegistrar){
 }
 
 /* Função para quando o usuário logar no aplicativo */
-void UsuarioLogado(){
-    std::cout << "Logado Games!!";
+void UsuarioLogado(bool UsuarioLogadoToken){
+
+    UsuarioLogadoToken = true;
+
+    int ContaEscolha;
+    
+    while(UsuarioLogadoToken == true){
+        
+        std::cout << "- x - Quark Bank App - x - \n";
+
+        std::cout << "" << std::endl;
+
+        std::cout << "Ola, " << NomeUserEncontrado << std::endl;
+        std::cout << "Saldo disponivel: " << SaldoUserEncontrado << std::endl;
+
+        std::cout << "" << std::endl;
+
+        std::cout << "Menu: " << std::endl;
+
+        std::cout << "" << std::endl;
+
+        std::cout << "1 . Extrato" << std::endl;
+        std::cout << "2 . Fazer pagamento" << std::endl;
+        std::cout << "3 . Adicionar saldo" << std::endl;
+        std::cout << "4 . Investimento" << std::endl;
+        std::cout << "5 . Informacoes da conta" << std::endl;
+        std::cout << "6 . Sair" << std::endl;
+
+        std::cout << "" << std::endl;
+
+        std::cout << "Escolha uma opcao: ";
+        std::cin >> ContaEscolha;
+
+        switch (ContaEscolha)
+        {
+        case 1:
+            break;
+
+        case 2:
+            break;
+
+        case 3:
+            break;
+
+        case 4:
+            break;
+
+        case 5:
+            break;
+
+        case 6:
+
+                system("cls");
+
+                std::cout << "Operacoes sendo encerradas..." << std::endl;
+
+                sleep(2);
+
+                UsuarioLogadoToken = false;
+                
+            break;
+        
+        default:
+            break;
+        }
+
+    }
 }
 
 /* Função na hora do usuário logar para ver se o mesmo possui conta no aplicativo */
@@ -110,7 +187,8 @@ int Logar(){
                     
                 system("cls");
 
-                UsuarioLogado();
+                bool UsuarioLogadoToken = 0;
+                UsuarioLogado(UsuarioLogadoToken);
             }
             
     return 0;
@@ -124,6 +202,7 @@ bool RegistrarUsuario(){
     NewUser.UserNome = NomeRegistrar;
     NewUser.UserLogin = LoginRegistrar;
     NewUser.UserSenha = SenhaRegistrar;
+    NewUser.UserSaldo = 0;
 
     DatabaseUsers.push_back(NewUser);
 
@@ -179,18 +258,24 @@ system("cls");
             std::cout << "" << std::endl;
 }
 
+/* Funcoes de um usuario logado */
+
 /* Função principal */
 int main(){
 
     Usuarios NewUser;
 
+    NewUser.UserNome = "Fernando";
     NewUser.UserLogin = "@fern";
     NewUser.UserSenha = "123";
+    NewUser.UserSaldo = 1500;
     
     DatabaseUsers.push_back(NewUser);
     
+    NewUser.UserNome = "Administrador";
     NewUser.UserLogin = "@admin";
     NewUser.UserSenha = "admin";
+    NewUser.UserSaldo = 150000;
     
     DatabaseUsers.push_back(NewUser);
 
