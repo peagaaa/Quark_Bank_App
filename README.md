@@ -1,7 +1,7 @@
 <h1 align="center"> Quark Bank App  </h1>
 
 <p align="center">
-Projeto desenvolvido durante as aulas de lógica de programação na instuição de ensino CEDTEC no curdo de Desenvolvimento de sistemas.</a>
+Projeto desenvolvido durante as aulas de lógica de programação na instuição de ensino CEDTEC no curso de Desenvolvimento de sistemas.</a>
 </p>
 
 ## 🤖 Tecnologias
